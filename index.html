@@ -17,7 +17,7 @@
     <title>Les petis Plats</title>
 </head>
 
-<body class="flex flex-col items-center">
+<body>
     <header>
         <div class="header-banner">
             <a>
@@ -33,57 +33,55 @@
 
 
                 <nav class='flex items-center justify-center w-full'>
-                    <form class="flex w-full h-[72px] mx-10 rounded-xl bg-white justify-between p-2">
-                        <input
+                    <form id="searchForm" class="flex w-full h-[72px] mx-10 rounded-xl bg-white justify-between p-2">
+                        <input id="searchInput"
                             class="border-none bg-transparent px-4 text-gray-400 outline-none focus:outline-none w-full"
                             type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ..." />
                         <button type="submit"
                             class="middle none center flex items-center justify-center rounded-xl bg-gray-800 p-2 text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-[55px]">
-                            <i class="fas fa-search text-lg leading-none"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29"
+                                fill="none">
+                                <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
+                                <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
+                            </svg>
                         </button>
-
-                        <!-- <button type="submit" class="m-2 rounded bg-gray-800 p-4 py-4 text-white">
-                            <i class="fas fa-search h-[28px] w-full"></i>
-                        </button> -->
                     </form>
                 </nav>
             </div>
         </div>
-
-
     </header>
-    <div class="relative inline-block text-left">
-        <div>
-            <button id="menuButton"
-                class="inline-flex w-[195px]
-                flex
-    justify-between
-                 rounded-[11px] bg-white px-[17px] py-[16px] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset  hover:bg-gray-50">
-                Ingrédients
-                <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </button>
-        </div>
 
-        <div id="menuItems"
-            class="absolute right-0 z-10 w-[195px] rounded-b-[11px] origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 hidden">
-            <div class="py-1">
-                <input type="text" id="searchInput" placeholder="Rechercher une recette, un ingrédient, ..."
-                    class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Support</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">License</a>
+    <main>
+        <div class="relative inline-block text-left">
+            <div>
+                <button id="menuButton" class="menu-close menu">
+                    Ingrédients
+                    <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                <div class="py-1">
+                    <input type="text" id="searchInputIngredients" placeholder=""
+                        class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
+                    <div id="ingredientList">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- <section class="recipes-container">
-    </section> -->
+        <section class="tags-container"></section>
 
+        <section class="recipes-container">
+        </section>
+    </main>
     <script src="scripts/service.js"></script>
-    <script src="scripts/pages/home.js"></script>
+    <!-- <script src="scripts/pages/home.js"></script> -->
+    <script src="scripts/pages/recipe.js"></script>
     <script src="scripts/recipeFactory.js"></script>
+    <script src="scripts/recipeByFilterFactory.js"></script>
     <script src="scripts/dropdown.js"></script>
 </body>
 

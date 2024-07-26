@@ -51,6 +51,13 @@ header {
     width: 80%;
 }
 
+body {
+    background-color: #C6C6C6;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
 .form-inline {
     display: flex;
     justify-content: space-between;
@@ -60,6 +67,36 @@ header {
 
 .form-control {
     border: white 1px solid;
+}
+
+
+.tags-container {
+
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.active-tag {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    background: #FFD15B;
+}
+
+
+.tag {
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 18px;
+    align-items: center;
+    border-radius: 10px;
+    background: #FFD15B;
+    color: #000;
+    font-size: 14px;
+    max-height: 55px;
+    /* max-width: 275px; */
 }
 
 h1 {
@@ -154,4 +191,56 @@ ul {
     overflow-y: auto;
     text-overflow: ellipsis;
 
+}
+
+.menu {
+    display: flex;
+    padding: 17px 16px;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFF;
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 500;
+    width: 195px;
+}
+
+.menu-close {
+    border-radius: 11px;
+}
+
+.menu-open {
+    border-radius: 11px 11px 0 0;
+}
+
+#menuItems {
+    width: 195px;
+    height: 315px;
+
+    /* padding: 17px 16px;
+    padding-top: 0; */
+    background: #FFF;
+    overflow-y: scroll;
+}
+
+#searchInputIngredients {
+    border-radius: 2px;
+    border: 1px solid #C6C6C6;
+    margin: 9px 16px;
+    max-width: fit-content;
+    max-width: -moz-available;
+}
+
+.dropdown-list {
+    /* display: flex; */
+    /* display: block; */
+    padding: 9px 16px;
+}
+
+.dropdown-list:hover {
+    background-color: #FFD15B;
+}
+
+.active-tag {
+    display: flex;
 }
