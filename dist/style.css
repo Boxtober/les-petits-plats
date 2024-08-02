@@ -1204,6 +1204,35 @@ ul {
   display: flex;
 }
 
+.tags-menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .tags-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 66px;
+  }
+  .nbr-recipes {
+    color: #1B1B1B;
+    font-family: Anton;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.img-recipes {
+  width: 380px;
+  height: 253px;
+  border-radius: 15px 15px 0 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .hover\:shadow-lg:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);

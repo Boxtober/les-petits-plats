@@ -52,37 +52,96 @@
     </header>
 
     <main>
-        <div class="relative inline-block text-left">
-            <div>
-                <button id="menuButton" class="menu-close menu">
-                    Ingrédients
-                    <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-            </div>
+        <section class="tags-menu-container">
+            <section class="tags-menu">
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button id="menuButton" class="menu-close menu">
+                            Ingrédients
+                            <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
 
-            <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
-                <div class="py-1">
-                    <input type="text" id="searchInputIngredients" placeholder=""
-                        class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
-                    <div id="ingredientList">
+                    <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                        <div class="py-1">
+                            <input type="text" id="searchInputIngredients" placeholder=""
+                                class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
+                            <div id="ingredientList">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button id="menuButtonApplience" class="menu-close menu">
+                            Appareils
+                            <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="menuItemsApplience" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                        <div class="py-1">
+                            <input type="text" id="searchInputAppareils" placeholder=""
+                                class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
+                            <div id="AppareilsList">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button id="menuButton" class="menu-close menu">
+                            Ustensiles
+                            <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                        <div class="py-1">
+                            <input type="text" id="searchInputUstensiles" placeholder=""
+                                class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
+                            <div id="UstensilesList">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="nbr-recipes">{{ nbrRecipe }} recettes</div>
+        </section>
+
         <section class="tags-container"></section>
 
         <section class="recipes-container">
         </section>
     </main>
-    <script src="scripts/service.js"></script>
-    <!-- <script src="scripts/pages/home.js"></script> -->
-    <script src="scripts/pages/recipe.js"></script>
-    <script src="scripts/recipeFactory.js"></script>
-    <script src="scripts/recipeByFilterFactory.js"></script>
-    <script src="scripts/dropdown.js"></script>
+
+
+
+
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/service.js"></script>
+    <script type="module" src="scripts/recipeFactory.js"></script>
+    <script type="module" src="scripts/filter.js"></script>
+    <script type="module" src="scripts/dropdown.js"></script>
+    <script type="module" src="scripts/appliancesFilter.js"></script>
 </body>
 
 </html>

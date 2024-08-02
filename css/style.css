@@ -244,3 +244,35 @@ ul {
 .active-tag {
     display: flex;
 }
+
+.tags-menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .tags-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 66px;
+    }
+
+    .nbr-recipes {
+
+        color: #1B1B1B;
+        font-family: Anton;
+        font-size: 21px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+}
+
+.img-recipes {
+    width: 380px;
+    height: 253px;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+}

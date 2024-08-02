@@ -1,5 +1,4 @@
-function recipeFactory(recipeObject) {
-    const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipeObject;
+export function recipeFactory({ id, image, name, servings, ingredients, time, description, appliance, ustensils }) {
 
     function getRecipeCard() {
         const article = document.createElement('article');
@@ -16,7 +15,9 @@ function recipeFactory(recipeObject) {
         const img = document.createElement('img');
         img.src = `../assets/Photos-Les-petits-plats/${image}`;
         img.alt = name;
-        img.classList.add('w-[380px]', 'h-[253px]', 'rounded-t-lg', 'object-cover');
+        // img.classList.add('w-[380px]', 'h-[253px]', 'rounded-t-lg', 'object-cover');
+        img.classList.add('img-recipes');
+
 
         const recipeInfo = document.createElement('div');
         recipeInfo.classList.add('recipe-info');
@@ -66,12 +67,12 @@ function recipeFactory(recipeObject) {
         return article;
     }
 
-    return { id, image, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard };
+    return { getRecipeCard };
 }
 
 
-// function recipeFactory(recipeObject) {
 
+// function recipeFactory(recipeObject) {
 //     const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipeObject;
 
 //     function getRecipeCard() {
@@ -85,7 +86,6 @@ function recipeFactory(recipeObject) {
 //         const span = document.createElement('span');
 //         span.classList.add('time');
 //         span.textContent = `${time}min`;
-
 
 //         const img = document.createElement('img');
 //         img.src = `../assets/Photos-Les-petits-plats/${image}`;
@@ -118,10 +118,9 @@ function recipeFactory(recipeObject) {
 
 //         const ingredientsList = document.createElement('ul');
 
-
 //         ingredients.forEach(ingredient => {
 //             const ingredientItem = document.createElement('li');
-//             ingredientItem.innerHTML = `${ingredient.ingredient}${ingredient.quantity ? `: </br> <span class="quantity">${ingredient.quantity} ${ingredient.unit || ''}</span>` : ''}`;
+//             ingredientItem.innerHTML = `${ingredient.ingredient}${ingredient.quantity ? `<br><span class="quantity">${ingredient.quantity} ${ingredient.unit || ''}</span>` : ''}`;
 //             ingredientsList.appendChild(ingredientItem);
 //         });
 
@@ -132,7 +131,8 @@ function recipeFactory(recipeObject) {
 //         recipeInfo.appendChild(recipeSection);
 //         recipeInfo.appendChild(ingredientsSection);
 
-//         link.appendChild(span); link.appendChild(img);
+//         link.appendChild(span);
+//         link.appendChild(img);
 //         link.appendChild(recipeInfo);
 
 //         article.appendChild(link);
