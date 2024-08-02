@@ -1,45 +1,56 @@
+
 function recipeByFilterFactory(recipes) {
     // const recipes = recipes;
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
     const recipesSection = document.querySelector('.recipes-container');
 
+    // const activeTags = document.querySelector('active-tag');
+
     const displayAllRecipe = () => {
         displayRecipes(recipes);
     }
 
-
-    // let activeTags = [];
-
-    // const filterRecipesByTags = (recipes, tags) => {
-    //     if (tags.length === 0) {
-    //         return recipes;
-    //     }
-
-    //     return recipes.filter(recipe => {
-    //         return tags.every(tag =>
-    //             recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(tag))
-    //         );
-    //     });
-    // };
-
     const filterRecipes = (query) => {
+
+        // const finalFilteredRecipes = filterRecipesByTags(filteredRecipes, activeTags);
+        // displayRecipes(finalFilteredRecipes);
+
+        const tags = [];
+
+        const tagsList = document.querySelectorAll('.tag');
+
+        if (tagsList) {
+            for (const tag of tagsList) {
+                tags.push(tag.innerText)
+            }
+        }
+
+        console.log(tags)
+
         //utilise filter pour parcourir et filtrer toutes les recettes
         const filteredRecipes = recipes.filter(recipe => {
+
             // vérifie si le nom, la description, les ingrédients correspondent à la requête
+            // const foundInTags = recipe.toLowerCase().includes(tags);
             const foundInName = recipe.name.toLowerCase().includes(query);
             const foundInDescription = recipe.description.toLowerCase().includes(query);
             const foundInIngredients = recipe.ingredients.some(ingredient =>
                 ingredient.ingredient.toLowerCase().includes(query)
             );
-            return foundInName || foundInDescription || foundInIngredients;
+            const foundInTags = recipe.ingredients.some(ingredient =>
+                ingredient.ingredient.includes(tags)
+            );
+
+            //|| foundInTags
+            return foundInName && foundInDescription && foundInIngredients && foundInTags;
         });
 
-        // const finalFilteredRecipes = filterRecipesByTags(filteredRecipes, activeTags);
-        // displayRecipes(finalFilteredRecipes);
 
         // affiche les recettes filtrées
         displayRecipes(filteredRecipes); //<-- filtré à nouveau sur filteredrecipes
+
+        console.log('filteredRecipes : ', filteredRecipes)
     }
 
     const displayRecipes = (recipesToDisplay) => {
