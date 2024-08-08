@@ -1181,7 +1181,9 @@ ul {
   overflow-y: scroll;
 }
 
-#searchInputIngredients {
+#searchInputIngredients,
+#searchInputAppliance,
+#searchInputustensils {
   border-radius: 2px;
   border: 1px solid #C6C6C6;
   margin: 9px 16px;

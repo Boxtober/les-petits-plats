@@ -54,76 +54,71 @@
     <main>
         <section class="tags-menu-container">
             <section class="tags-menu">
-                <div class="relative inline-block text-left">
+
+                <div class="relative inline-block text-left dropdown">
                     <div>
-                        <button id="menuButton" class="menu-close menu">
+                        <button class="menu-close menu">
                             Ingrédients
                             <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7">
-                                </path>
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                     </div>
-
-                    <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                    <div id="menuItems"
+                        class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input type="text" id="searchInputIngredients" placeholder=""
+                            <input id="searchInputIngredients" type="text" placeholder="Rechercher Ingrédients"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
-                            <div id="ingredientList">
-                            </div>
+                            <div class="item-list" id="ingredientList"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative inline-block text-left">
+                <div class="relative inline-block text-left dropdown">
                     <div>
-                        <button id="menuButtonApplience" class="menu-close menu">
+                        <button class="menu-close menu">
                             Appareils
                             <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7">
-                                </path>
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                     </div>
-
-                    <div id="menuItemsApplience" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                    <div id="menuItems"
+                        class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input type="text" id="searchInputAppareils" placeholder=""
+                            <input id="searchInputAppliance" type="text" placeholder="Rechercher Appareils"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
-                            <div id="AppareilsList">
-                            </div>
+                            <div class="item-list" id="applianceList"></div>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="relative inline-block text-left">
+                <div class="relative inline-block text-left dropdown">
                     <div>
-                        <button id="menuButton" class="menu-close menu">
-                            Ustensiles
+                        <button class="menu-close menu">
+                            Ustensibles
                             <svg class="-mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7">
-                                </path>
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                     </div>
-
-                    <div id="menuItems" class="absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
+                    <div id="menuItems"
+                        class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input type="text" id="searchInputUstensiles" placeholder=""
+                            <input id="searchInputustensils" type="text" placeholder="Rechercher ustensibles"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
-                            <div id="UstensilesList">
-                            </div>
+                            <div class="item-list" id="ustensilsList"></div>
                         </div>
                     </div>
                 </div>
             </section>
+
             <div class="nbr-recipes">{{ nbrRecipe }} recettes</div>
         </section>
 
