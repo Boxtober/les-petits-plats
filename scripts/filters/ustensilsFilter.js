@@ -12,6 +12,7 @@ export function ustensilsFilter(recipes, onTagSelect) {
     });
 
     const ustensilListContainer = document.getElementById('ustensilList');
+    ustensilListContainer.innerHTML = '';
 
 
     /*****************************************************/

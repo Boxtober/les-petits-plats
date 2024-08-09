@@ -7,12 +7,14 @@ export function appliancesFilter(recipes, onTagSelect) {
         appliancesSet.add(recipe.appliance);  // Ajout direct de l'appareil
     });
     const applianceListContainer = document.getElementById('applianceList');
-
+    applianceListContainer.innerHTML = '';
     /*****************************************************/
 
     const activeTags = new Set();
 
     /************************ ajoute la liste d'appareils dans le dropdown **************************/
+
+    // foreach uniquemetn sur ceux qui restent
     appliancesSet.forEach(appliance => {
         const a = document.createElement('a');
         a.href = "#";

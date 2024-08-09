@@ -9,12 +9,11 @@ export function ingredientsFilter(recipes, onTagSelect) {
     });
 
     const ingredientListContainer = document.getElementById('ingredientList');
+    ingredientListContainer.innerHTML = '';
 
     /*****************************************************/
 
-
     const activeTags = new Set();
-
 
     /************************ ajoute la liste d'ingredients dans le dropdown **************************/
     ingredientsSet.forEach(ingredient => {

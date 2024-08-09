@@ -3,10 +3,12 @@ import { recipeFactory } from './recipeFactory.js';
 import { filterRecipes } from './filter.js';
 import { initDropdown } from './dropdown.js';
 
+//mettre a jour le contenue du dropdown une fois qu'un tag à été appliquer
 
 document.addEventListener('DOMContentLoaded', async () => {
     const { recipes } = await getRecipes();
     let activeTags = [];
+    const searchInput = document.getElementById('searchInput');
 
     function displayRecipes(recipesToDisplay) {
         const recipeContainer = document.querySelector('.recipes-container');
@@ -27,34 +29,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    if (recipes.length >= 3) {
-        //affiche toutes les recettes lors du chargement initial de la page
-        displayRecipes(recipes);
-        initDropdown(recipes, handleTagSelect);
 
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', () => {
-            //recupere la valeur du champ utilisateur
+    //affiche toutes les recettes lors du chargement initial de la page
+    displayRecipes(recipes);
+    initDropdown(recipes, handleTagSelect);
+
+    searchInput.addEventListener('input', () => {
+        //recupere la valeur du champ utilisateur
+        const query = searchInput.value.trim().toLowerCase();
+
+        // filtre uniquement si la valeur est += 3 caracteres
+        if (query.length >= 3) {
+
             const query = searchInput.value.trim().toLowerCase();
 
-            // filtre uniquement si la valeur est += 3 caracteres
-            if (query.length >= 3) {
+            // filtre les recettes avec valeur de linput et tags actifs
+            const filteredRecipes = filterRecipes(recipes, query, activeTags);
 
-                const query = searchInput.value.trim().toLowerCase();
 
-                // filtre les recettes avec valeur de linput et tags actifs
-                const filteredRecipes = filterRecipes(recipes, query, activeTags);
-                //affiche les résultats filtrés en fonction de la valeur de l'input et si la requete est >= à 3
-                displayRecipes(filteredRecipes);
-            } else {
-                displayRecipes(recipes);
-            }
+            //affiche les résultats filtrés en fonction de la valeur de l'input et si la requete est >= à 3
+            displayRecipes(filteredRecipes);
+            initDropdown(filteredRecipes, handleTagSelect);
 
-        });
-    } else {
+        } else {
+            displayRecipes(recipes);
+            initDropdown(recipes, handleTagSelect);
+        }
 
-        console.error('Aucune recette trouvée.');
-    }
+    });
 
     //appelé à chaque maj des tags
     function handleTagSelect(selectedTags) {
@@ -64,4 +66,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         const filteredRecipes = filterRecipes(recipes, query, activeTags);
         displayRecipes(filteredRecipes);
     }
+
 });

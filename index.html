@@ -37,7 +37,7 @@
                         <input id="searchInput"
                             class="border-none bg-transparent px-4 text-gray-400 outline-none focus:outline-none w-full"
                             type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ..." />
-                        <button type="submit"
+                        <button type="button"
                             class="middle none center flex items-center justify-center rounded-xl bg-gray-800 p-2 text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-[55px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29"
                                 fill="none">
@@ -118,8 +118,9 @@
                     </div>
                 </div>
             </section>
+            <div class="nbr-recipes"></div>
 
-            <div class="nbr-recipes">{{ nbrRecipe }} recettes</div>
+            <!-- <div class="nbr-recipes">{{ nbr }} recettes</div> -->
         </section>
 
         <section class="tags-container"></section>
