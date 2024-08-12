@@ -11,8 +11,6 @@ export function ingredientsFilter(recipes, onTagSelect) {
     const ingredientListContainer = document.getElementById('ingredientList');
     ingredientListContainer.innerHTML = '';
 
-    /*****************************************************/
-
     const activeTags = new Set();
 
     /************************ ajoute la liste d'ingredients dans le dropdown **************************/
@@ -59,8 +57,6 @@ export function ingredientsFilter(recipes, onTagSelect) {
         ingredientListContainer.appendChild(a);
     });
 
-
-
     // compare la valeur de l'input pour afficher ou cacher les ingredient dans la liste
     const searchInputIngredients = document.getElementById('searchInputIngredients');
     searchInputIngredients.addEventListener('input', function () {
@@ -75,7 +71,6 @@ export function ingredientsFilter(recipes, onTagSelect) {
             }
         });
     });
-
 
     function createTag(ingredientName) {
         const tagContainer = document.querySelector('.tags-container');
@@ -125,6 +120,5 @@ export function ingredientsFilter(recipes, onTagSelect) {
             }
         });
     }
-
 }
 

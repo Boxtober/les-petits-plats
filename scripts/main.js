@@ -4,7 +4,6 @@ import { filterRecipes } from './filter.js';
 import { initDropdown } from './dropdown.js';
 
 //mettre a jour le contenue du dropdown une fois qu'un tag à été appliquer
-
 document.addEventListener('DOMContentLoaded', async () => {
     const { recipes } = await getRecipes();
     let activeTags = [];
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
     }
-
 
     //affiche toutes les recettes lors du chargement initial de la page
     displayRecipes(recipes);
@@ -65,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const query = searchInput.value.trim().toLowerCase();
         const filteredRecipes = filterRecipes(recipes, query, activeTags);
         displayRecipes(filteredRecipes);
+        // initDropdown(handleTagSelect, activeTags);
     }
 
 });
