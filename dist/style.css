@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1077,6 +1077,7 @@ h1 {
 main {
   padding: 1rem 5rem;
   background-color: C6C6C6;
+  align-items: center;
 }
 
 h2 {
@@ -1126,9 +1127,11 @@ ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-items: center;
-  max-width: 1236px;
+  /* max-width: 1236px;*/
   gap: 2rem;
   padding: 2rem 0;
+  width: 100%;
+  justify-content: center;
 }
 
 .recipe-info {
@@ -1190,6 +1193,7 @@ ul {
   max-width: -moz-fit-content;
   max-width: fit-content;
   max-width: -moz-available;
+  padding-right: 30px;
 }
 
 .dropdown-list {
@@ -1206,6 +1210,15 @@ ul {
   display: flex;
 }
 
+.nbr-recipes {
+  color: #1B1B1B;
+  font-family: Anton;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .tags-menu-container {
   display: flex;
   flex-direction: row;
@@ -1217,14 +1230,6 @@ ul {
     align-items: center;
     gap: 66px;
   }
-  .nbr-recipes {
-    color: #1B1B1B;
-    font-family: Anton;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
 }
 
 .img-recipes {
@@ -1233,6 +1238,37 @@ ul {
   border-radius: 15px 15px 0 0;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+/* Pour Chrome, Safari, et autres navigateurs basés sur WebKit */
+
+input[type="search"]::-webkit-search-clear-button {
+  -webkit-appearance: none;
+  /* Retire le style par défaut du bouton */
+  color: #FFD15B;
+  /* Changer la couleur du texte */
+  background: transparent;
+  /* Assurez-vous que le fond est transparent */
+  border: none;
+  /* Assurez-vous qu'il n'y a pas de bordure */
+}
+
+.loop {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+@media (max-width: 1280px) {
+  .recipes-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .recipes-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 
 .hover\:shadow-lg:hover {

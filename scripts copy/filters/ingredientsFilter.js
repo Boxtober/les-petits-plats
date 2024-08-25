@@ -1,33 +1,34 @@
 
+
+// Déclarer activeTags en dehors de la fonction pour la rendre globale
 const activeTags = new Set();
 
-export function appliancesFilter(recipes, onTagSelect) {
-    const appliancesSet = new Set();
-    // recipes.forEach(recipe => {
-    //     recipe.appliances.forEach(appliance => {
-    //         appliancesSet.add(appliance);
-    //     })
-    // });
+export function ingredientsFilter(recipes, onTagSelect) {
 
+    // Récupère les ingrédients
+    const ingredientsSet = new Set();
     recipes.forEach(recipe => {
-        // Vérifiez que `recipe.appliance` est défini et n'est pas vide
-        if (recipe.appliance) {
-            // Ajoutez l'appliance directement, car ce n'est pas un tableau
-            appliancesSet.add(recipe.appliance);
-        }
+        recipe.ingredients.forEach(ingredient => {
+            ingredientsSet.add(ingredient.ingredient);
+        });
     });
 
-    const applianceListContainer = document.getElementById('applianceList');
-    applianceListContainer.innerHTML = '';
+    const ingredientListContainer = document.getElementById('ingredientList');
+    ingredientListContainer.innerHTML = '';
 
-    appliancesSet.forEach(appliance => {
+    /***Ajout liste ingrédients dans dropdown ***/
+    ingredientsSet.forEach(ingredient => {
         const a = document.createElement('a');
         a.href = "#";
         a.className = "dropdown-list block";
-        a.textContent = appliance;
+        a.textContent = ingredient;
 
-        if (activeTags.has(appliance)) {
+        // Réapplique la classe `active-tag` si l'ingrédient est déjà actif
+
+        if (activeTags.has(ingredient)) {
             a.classList.add('active-tag');
+
+            // Ajoute le bouton de suppression si l'ingrédient est déjà actif
             const removeActiveBtn = document.createElement('button');
             removeActiveBtn.className = 'remove-active-btn';
             removeActiveBtn.innerHTML = `
@@ -39,8 +40,8 @@ export function appliancesFilter(recipes, onTagSelect) {
             removeActiveBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 a.classList.remove('active-tag');
-                removeTag(appliance);
-                activeTags.delete(appliance);
+                removeTag(ingredient);
+                activeTags.delete(ingredient);
                 removeActiveBtn.remove();
                 onTagSelect(Array.from(activeTags));
             });
@@ -50,9 +51,12 @@ export function appliancesFilter(recipes, onTagSelect) {
 
         a.addEventListener('click', (e) => {
             e.preventDefault();
-            //  console.log(recipes);
+            console.log(recipes);
+
             if (!a.classList.contains('active-tag')) {
                 a.classList.add('active-tag');
+
+                // Ajoute le bouton de suppression
                 const removeActiveBtn = document.createElement('button');
                 removeActiveBtn.className = 'remove-active-btn';
                 removeActiveBtn.innerHTML = `
@@ -64,32 +68,32 @@ export function appliancesFilter(recipes, onTagSelect) {
                 removeActiveBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     a.classList.remove('active-tag');
-                    removeTag(appliance);
-                    activeTags.delete(appliance);
+                    removeTag(ingredient);
+                    activeTags.delete(ingredient);
                     removeActiveBtn.remove();
                     onTagSelect(Array.from(activeTags));
                 });
 
                 a.appendChild(removeActiveBtn);
-                createTag(appliance);
-                activeTags.add(appliance);
+                createTag(ingredient);
+                activeTags.add(ingredient);
             } else {
                 a.classList.remove('active-tag');
-                removeTag(appliance);
-                activeTags.delete(appliance);
+                removeTag(ingredient);
+                activeTags.delete(ingredient);
                 const removeButton = a.querySelector('.remove-active-btn');
                 if (removeButton) removeButton.remove();
             }
             onTagSelect(Array.from(activeTags));
         });
-
-        applianceListContainer.appendChild(a);
+        ingredientListContainer.appendChild(a);
     });
 
-    const searchInputAppliances = document.getElementById('searchInputAppliance');
-    searchInputAppliances.addEventListener('input', function () {
+    // Compare la valeur de l'input pour afficher ou cacher les ingrédients dans la liste
+    const searchInputIngredients = document.getElementById('searchInputIngredients');
+    searchInputIngredients.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase();
-        const items = document.querySelectorAll('#applianceList a');
+        const items = document.querySelectorAll('#ingredientList a');
         items.forEach(item => {
             const text = item.textContent.toLowerCase();
             if (text.includes(searchTerm)) {
@@ -100,25 +104,26 @@ export function appliancesFilter(recipes, onTagSelect) {
         });
     });
 
-    function createTag(applianceName) {
+    function createTag(ingredientName) {
         const tagContainer = document.querySelector('.tags-container');
         const tag = document.createElement('div');
         tag.className = 'tag';
-        tag.textContent = applianceName;
+        tag.textContent = ingredientName;
 
-
-        tag.setAttribute('data-appliance', applianceName);
+        // Ajoutez un attribut pour lier le tag au lien <a>
+        tag.setAttribute('data-ingredient', ingredientName);
 
         const closeButton = document.createElement('button');
         closeButton.className = 'ml-2 text-gray-500 hover:text-gray-700';
         closeButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
             <path d="M12 11.5L7 6.5M7 6.5L2 1.5M7 6.5L12 1.5M7 6.5L2 11.5" stroke="#1B1B1B" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>`;
+            </svg>
+        `;
 
         closeButton.addEventListener('click', () => {
-            removeTag(applianceName);
-            activeTags.delete(applianceName);
+            removeTag(ingredientName);
+            activeTags.delete(ingredientName);
             tag.remove();
             onTagSelect(Array.from(activeTags));
         });
@@ -127,23 +132,24 @@ export function appliancesFilter(recipes, onTagSelect) {
         tagContainer.appendChild(tag);
     }
 
-    function removeTag(applianceName) {
+
+    function removeTag(ingredientName) {
+        // Supprime le tag du container de tags
         const tags = document.querySelectorAll('.tags-container .tag');
         tags.forEach(tag => {
-            if (tag.getAttribute('data-appliance') === applianceName) {
+            if (tag.getAttribute('data-ingredient') === ingredientName) {
                 tag.remove();
             }
         });
 
-        const dropdownItems = document.querySelectorAll('#applianceList a');
+        // Supprime la classe active-tag de l'élément <a> correspondant
+        const dropdownItems = document.querySelectorAll('#ingredientList a');
         dropdownItems.forEach(item => {
-            if (item.textContent.trim() === applianceName) {
+            if (item.textContent.trim() === ingredientName) {  // trim() enlève les espaces dans la valeur de l'ingrédient
                 item.classList.remove('active-tag');
                 const removeButton = item.querySelector('.remove-active-btn');
                 if (removeButton) removeButton.remove();
             }
         });
     }
-    return activeTags;
-
 }

@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const recipeContainer = document.querySelector('.recipes-container');
         recipeContainer.innerHTML = '';
 
+        // console.log('recettes affichés:', recipesToDisplay);
+        // console.log('***********************************************************')
+
         const inputValue = searchInput.value.trim();
         if (recipesToDisplay.length === 0) {
             const errorMessage = document.createElement('p');
@@ -32,23 +35,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         recipesCountElement.textContent = `${recipesToDisplay.length} recette${recipesToDisplay.length > 1 ? 's' : ''} disponible${recipesToDisplay.length > 1 ? 's' : ''}`;
 
     }
-    function updateDropdown(filteredRecipes) {
-        let ingredients = ingredientsFilter(filteredRecipes, handleTagSelect);
-        let appliances = appliancesFilter(filteredRecipes, handleTagSelect);
-        let ustensils = ustensilsFilter(filteredRecipes, handleTagSelect);
 
-        activeTags = [...ingredients, ...appliances, ...ustensils]
-        console.log('activeTags', activeTags);
+    function updateDropdown(filteredRecipes) {
+        ingredientsFilter(filteredRecipes, handleTagSelect);
+        appliancesFilter(filteredRecipes, handleTagSelect);
+        ustensilsFilter(filteredRecipes, handleTagSelect);
     }
 
-    function handleTagSelect() {
-        updateDropdown(filteredRecipes);
-
-        console.log('activeTags 2 ', activeTags);
+    function handleTagSelect(activeTags) {
 
         const query = searchInput.value.trim().toLowerCase();
+
+        console.log('activeTags:', activeTags);
+        // console.log('query:', query);
+
+        // Refiltrer les recettes en fonction des tags actifs et de la recherche
         filteredRecipes = filterRecipes(recipes, query, activeTags);
 
+        // console.log('filteredRecipes:', filteredRecipes);
+        // console.log('***********************************************************')
+        // met à jour l'affichage des recettes et dropdowns
         displayRecipes(filteredRecipes);
         updateDropdown(filteredRecipes);
     }
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDropdown(recipes, handleTagSelect);
     // Affichage initial des recettes
     displayRecipes(recipes);
+    updateDropdown(recipes);
 
     // Gestion de la recherche textuelle
     searchInput.addEventListener('input', () => {

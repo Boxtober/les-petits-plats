@@ -69,7 +69,13 @@
                     <div id="menuItems"
                         class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input id="searchInputIngredients" type="text" placeholder="Rechercher Ingrédients"
+                            <svg class="loop" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="0.5" />
+                                <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A"
+                                    stroke-width="0.5" />
+                            </svg>
+                            <input id="searchInputIngredients" type="search" placeholder="Rechercher Ingrédients"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
                             <div class="item-list" id="ingredientList"></div>
                         </div>
@@ -90,7 +96,14 @@
                     <div id="menuItems"
                         class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input id="searchInputAppliance" type="text" placeholder="Rechercher Appareils"
+                            <svg class="loop" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="0.5" />
+                                <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A"
+                                    stroke-width="0.5" />
+                            </svg>
+                            <input type="search" id="searchInputAppliance" type="text"
+                                placeholder="Rechercher Appareils"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
                             <div class="item-list" id="applianceList"></div>
                         </div>
@@ -111,19 +124,29 @@
                     <div id="menuItems"
                         class="menu-items absolute right-0 z-10 rounded-b-[11px] origin-top-right hidden">
                         <div class="py-1">
-                            <input id="searchInputUstensils" type="text" placeholder="Rechercher ustensibles"
+                            <svg class="loop" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="0.5" />
+                                <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A"
+                                    stroke-width="0.5" />
+                            </svg>
+                            <input type="search" id="searchInputUstensils" type="text"
+                                placeholder="Rechercher ustensibles"
                                 class="block w-full px-4 py-2 text-sm text-gray-700 bg-gray-50 border-b border-gray-200 focus:outline-none focus:ring-0 focus:bg-white">
                             <div class="item-list" id="ustensilList"></div>
                         </div>
                     </div>
                 </div>
             </section>
-            <div class="nbr-recipes"></div>
-
+            <div></div>
+            <p class="nbr-recipes" id="recipesCount">0 recettes disponibles</p>
             <!-- <div class="nbr-recipes">{{ nbr }} recettes</div> -->
         </section>
 
-        <section class="tags-container"></section>
+        <section class="tags-container">
+
+
+        </section>
 
         <section class="recipes-container">
         </section>
@@ -139,6 +162,7 @@
     <script type="module" src="scripts/dropdown.js"></script>
     <script type="module" src="scripts/filters/appliancesFilter.js"></script>
     <script type="module" src="scripts/filters/ingredientsFilter.js"></script>
+    <script type="module" src="scripts/filters/ustensilsFilter.js"></script>
 
 </body>
 

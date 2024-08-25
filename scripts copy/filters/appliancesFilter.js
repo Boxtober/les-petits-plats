@@ -144,6 +144,4 @@ export function appliancesFilter(recipes, onTagSelect) {
             }
         });
     }
-    return activeTags;
-
 }
