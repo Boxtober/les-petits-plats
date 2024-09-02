@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('searchInput');
     const recipesCountElement = document.getElementById('recipesCount');
 
-
     function displayRecipes(recipesToDisplay) {
         const recipeContainer = document.querySelector('.recipes-container');
         recipeContainer.innerHTML = '';
@@ -25,13 +24,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             errorMessage.textContent = `Aucune recette ne contient '${inputValue}'. Vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
             recipeContainer.appendChild(errorMessage);
         } else {
-            for (let i = 0; i < recipesToDisplay.length; i++) {
-                const recipeCard = recipeFactory(recipesToDisplay[i]).getRecipeCard();
+            recipesToDisplay.forEach(recipe => {
+                const recipeCard = recipeFactory(recipe).getRecipeCard();
                 recipeContainer.appendChild(recipeCard);
-            }
+            });
         }
 
         recipesCountElement.textContent = `${recipesToDisplay.length} recette${recipesToDisplay.length > 1 ? 's' : ''} disponible${recipesToDisplay.length > 1 ? 's' : ''}`;
+
     }
 
     function updateDropdown(filteredRecipes) {
@@ -56,8 +56,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
 
-
+    // Initialisation des dropdowns
     initDropdown(recipes, handleTagSelect);
+    // Affichage initial des recettes
     displayRecipes(recipes);
 
 
@@ -77,8 +78,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+// import { getRecipes } from './service.js';
+// import { recipeFactory } from './recipeFactory.js';
+// import { filterRecipes } from './filter.js';
+// import { initDropdown } from './dropdown.js';
+// import { ingredientsFilter } from './filters/ingredientsFilter.js';
+// import { ustensilsFilter } from './filters/ustensilsFilter.js';
+// import { appliancesFilter } from './filters/appliancesFilter.js';
+
+
 // document.addEventListener('DOMContentLoaded', async () => {
-//     const { recipes } = await getRecipes();
+//     let { recipes } = await getRecipes();
 //     let filteredRecipes = recipes;
 //     let activeTags = [];
 //     const searchInput = document.getElementById('searchInput');
@@ -94,26 +104,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 //             errorMessage.textContent = `Aucune recette ne contient '${inputValue}'. Vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
 //             recipeContainer.appendChild(errorMessage);
 //         } else {
-//             for (let i = 0; i < recipesToDisplay.length; i++) {
-//                 const recipeCard = recipeFactory(recipesToDisplay[i]).getRecipeCard();
+//             recipesToDisplay.forEach(recipe => {
+//                 const recipeCard = recipeFactory(recipe).getRecipeCard();
 //                 recipeContainer.appendChild(recipeCard);
-//             }
+//             });
 //         }
 
 //         recipesCountElement.textContent = `${recipesToDisplay.length} recette${recipesToDisplay.length > 1 ? 's' : ''} disponible${recipesToDisplay.length > 1 ? 's' : ''}`;
+
 //     }
 
 //     function updateDropdown(filteredRecipes) {
-//         const ingredients = ingredientsFilter(filteredRecipes, handleTagSelect);
-//         const appliances = appliancesFilter(filteredRecipes, handleTagSelect);
-//         const ustensils = ustensilsFilter(filteredRecipes, handleTagSelect);
+//         let ingredients = ingredientsFilter(filteredRecipes, handleTagSelect);
+//         let appliances = appliancesFilter(filteredRecipes, handleTagSelect);
+//         let ustensils = ustensilsFilter(filteredRecipes, handleTagSelect);
 
-//         activeTags = [...ingredients, ...appliances, ...ustensils];
+//         activeTags = [...ingredients, ...appliances, ...ustensils]
 //         console.log('activeTags', activeTags);
 //     }
 
 //     function handleTagSelect() {
 //         updateDropdown(filteredRecipes);
+
+//         console.log('activeTags 2 ', activeTags);
 
 //         const query = searchInput.value.trim().toLowerCase();
 //         filteredRecipes = filterRecipes(recipes, query, activeTags);
@@ -121,6 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 //         displayRecipes(filteredRecipes);
 //         updateDropdown(filteredRecipes);
 //     }
+
 
 //     // Initialisation des dropdowns
 //     initDropdown(recipes, handleTagSelect);
@@ -134,10 +148,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 //         if (query.length >= 3) {
 //             filteredRecipes = filterRecipes(recipes, query, activeTags);
 //         } else {
-//             filteredRecipes = recipes;
+//             filteredRecipes = recipes; // Affiche toutes les recettes si la recherche contient moins de 3 caractères
 //         }
 //         displayRecipes(filteredRecipes);
 //         updateDropdown(filteredRecipes);
 //     });
+
+//     // met à jour updateDropdown(filteredRecipes); au clic de creatTag de appliance et ustensils
 
 // });
