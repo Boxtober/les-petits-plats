@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         recipesCountElement.textContent = `${recipesToDisplay.length} recette${recipesToDisplay.length > 1 ? 's' : ''} disponible${recipesToDisplay.length > 1 ? 's' : ''}`;
 
     }
+
     function updateDropdown(filteredRecipes) {
         let ingredients = ingredientsFilter(filteredRecipes, handleTagSelect);
         let appliances = appliancesFilter(filteredRecipes, handleTagSelect);
