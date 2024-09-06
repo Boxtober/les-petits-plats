@@ -1,5 +1,6 @@
 export async function getRecipes() {
     try {
+
         const response = await fetch('data/recipes.json');
         if (!response.ok) {
             throw new Error('Erreur');
@@ -9,7 +10,9 @@ export async function getRecipes() {
             console.error('Données JSON invalides :', data);
             return { recipes: [] };
         }
+
         return { recipes: data.recipes };
+
     } catch (error) {
         console.error('Erreur:', error);
         return { recipes: [] };
