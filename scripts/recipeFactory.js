@@ -1,4 +1,4 @@
-export function recipeFactory({ id, image, name, servings, ingredients, time, description, appliance, ustensils }) {
+export function recipeFactory({ id, image, name, ingredients, time, description }) {
 
     function getRecipeCard() {
         const article = document.createElement('article');
@@ -13,9 +13,8 @@ export function recipeFactory({ id, image, name, servings, ingredients, time, de
         span.textContent = `${time}min`;
 
         const img = document.createElement('img');
-        img.src = `../assets/Photos-Les-petits-plats/${image}`;
+        img.src = `assets/Photos-Les-petits-plats/${image}`;
         img.alt = name;
-        // img.classList.add('w-[380px]', 'h-[253px]', 'rounded-t-lg', 'object-cover');
         img.classList.add('img-recipes');
 
         const recipeInfo = document.createElement('div');
