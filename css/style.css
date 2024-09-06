@@ -104,7 +104,7 @@ h1 {
 
 main {
     padding: 1rem 6rem;
-    background-color: C6C6C6;
+    background-color: #C6C6C6;
     align-items: center;
 }
 
@@ -254,13 +254,13 @@ ul {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
 
-    .tags-menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 66px;
-    }
+.tags-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 66px;
 }
 
 .img-recipes {
@@ -284,6 +284,7 @@ ul {
 .hover-stroke:hover .hover-stroke circle,
 .hover-stroke:hover .hover-stroke line {
     stroke: black;
+    filter: brightness(0);
 }
 
 
