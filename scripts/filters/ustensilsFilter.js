@@ -25,7 +25,7 @@ export function ustensilsFilter(recipes, onTagSelect) {
     // });
 
     const ustensilListContainer = document.getElementById('ustensilList');
-    ustensilListContainer.innerHTML = '';
+    ustensilListContainer.textContent = '';
 
     /***Ajout liste ustensils dans dropdown ***/
     ustensilsSet.forEach(ustensil => {

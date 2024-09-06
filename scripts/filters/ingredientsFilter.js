@@ -13,7 +13,7 @@ export function ingredientsFilter(recipes, onTagSelect) {
     });
 
     const ingredientListContainer = document.getElementById('ingredientList');
-    ingredientListContainer.innerHTML = '';
+    ingredientListContainer.textContent = '';
 
     /***Ajout liste ingrédients dans dropdown ***/
     ingredientsSet.forEach(ingredient => {

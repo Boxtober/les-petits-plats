@@ -18,7 +18,7 @@ export function appliancesFilter(recipes, onTagSelect) {
     });
 
     const applianceListContainer = document.getElementById('applianceList');
-    applianceListContainer.innerHTML = '';
+    applianceListContainer.textContent = '';
 
     appliancesSet.forEach(appliance => {
         const a = document.createElement('a');

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function displayRecipes(recipesToDisplay) {
         const recipeContainer = document.querySelector('.recipes-container');
-        recipeContainer.innerHTML = '';
+        recipeContainer.textContent = '';
 
         const inputValue = searchInput.value.trim();
         if (recipesToDisplay.length === 0) {
