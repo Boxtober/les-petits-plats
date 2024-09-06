@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('searchInput');
     const recipesCountElement = document.getElementById('recipesCount');
 
-
     function displayRecipes(recipesToDisplay) {
         const recipeContainer = document.querySelector('.recipes-container');
         recipeContainer.innerHTML = '';
@@ -52,11 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateDropdown(filteredRecipes);
     }
 
-
-
     initDropdown(recipes, handleTagSelect);
     displayRecipes(recipes);
-
 
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
@@ -69,6 +65,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         displayRecipes(filteredRecipes);
         updateDropdown(filteredRecipes);
     });
-
 
 });
