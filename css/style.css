@@ -276,6 +276,18 @@ ul {
     right: 25px;
 }
 
+.hover-stroke {
+
+    stroke: black;
+}
+
+.hover-stroke:hover .hover-stroke circle,
+.hover-stroke:hover .hover-stroke line {
+    stroke: black;
+}
+
+
+
 @media (max-width: 1450px) {
     .recipes-container {
         grid-template-columns: repeat(2, 380px);

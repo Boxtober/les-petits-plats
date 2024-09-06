@@ -38,13 +38,14 @@
                             class="border-none bg-transparent px-4 text-gray-400 outline-none focus:outline-none w-full"
                             type="search" name="search" placeholder="Rechercher une recette, un ingrédient, ..." />
                         <button type="button"
-                            class="middle none center flex items-center justify-center rounded-xl bg-gray-800 p-2 text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-[55px]">
+                            class="group middle none center flex items-center justify-center rounded-xl bg-gray-800 p-2 text-white shadow-md shadow-gray-500/20 transition-all hover:bg-[#FFD15B] hover:shadow-lg hover:shadow-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-[55px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29"
-                                fill="none">
-                                <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
-                                <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
+                                fill="none" class="transition-all hover-stroke">
+                                <circle cx="10" cy="10.4219" r="9.5" stroke="white"></circle>
+                                <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white"></line>
                             </svg>
                         </button>
+
                     </form>
                 </nav>
             </div>
@@ -138,20 +139,13 @@
             </section>
             <div></div>
             <p class="nbr-recipes" id="recipesCount">0 recettes disponibles</p>
-            <!-- <div class="nbr-recipes">{{ nbr }} recettes</div> -->
         </section>
 
         <section class="tags-container">
-
-
         </section>
-
         <section class="recipes-container">
         </section>
     </main>
-
-
-
 
     <script type="module" src="scripts/main.js"></script>
     <script type="module" src="scripts/service.js"></script>

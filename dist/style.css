@@ -1016,6 +1016,15 @@ ul {
   right: 25px;
 }
 
+.hover-stroke {
+  stroke: black;
+}
+
+.hover-stroke:hover .hover-stroke circle,
+.hover-stroke:hover .hover-stroke line {
+  stroke: black;
+}
+
 @media (max-width: 1450px) {
   .recipes-container {
     grid-template-columns: repeat(2, 380px);
@@ -1026,6 +1035,11 @@ ul {
   .recipes-container {
     grid-template-columns: repeat(1, 380px);
   }
+}
+
+.hover\:bg-\[\#FFD15B\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 209 91 / var(--tw-bg-opacity));
 }
 
 .hover\:shadow-lg:hover {
