@@ -64,6 +64,5 @@ export function recipeFactory({ id, image, name, ingredients, time, description 
 
         return article;
     }
-
     return { getRecipeCard };
 }
