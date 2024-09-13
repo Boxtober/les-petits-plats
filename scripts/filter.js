@@ -14,12 +14,9 @@ export function filterRecipes(recipes, query, tags = []) {
             const isApplianceTag = recipe.appliance.toLowerCase() === tagLower;
             const isUstensilTag = recipe.ustensils.some(ustensil => ustensil.toLowerCase() === tagLower);
 
-            // console.log(`Tag: ${tagLower}, isIngredientTag: ${isIngredientTag}, isApplianceTag: ${isApplianceTag}, isUstensilTag: ${isUstensilTag}`);
-
             return isIngredientTag || isApplianceTag || isUstensilTag;
         });
 
-        // console.log(`foundbySearch: ${foundBySearch}, foundByTags: ${foundByTags}`);
 
         return foundBySearch && foundByTags;
     });

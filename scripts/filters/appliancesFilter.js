@@ -1,13 +1,9 @@
+import { createTag, removeTag } from '../tags.js';
 
 const activeTags = new Set();
-
+let filter = 'appliance';
 export function appliancesFilter(recipes, onTagSelect) {
     const appliancesSet = new Set();
-    // recipes.forEach(recipe => {
-    //     recipe.appliances.forEach(appliance => {
-    //         appliancesSet.add(appliance);
-    //     })
-    // });
 
     recipes.forEach(recipe => {
         // Vérifiez que `recipe.appliance` est défini et n'est pas vide
@@ -39,7 +35,7 @@ export function appliancesFilter(recipes, onTagSelect) {
             removeActiveBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 a.classList.remove('active-tag');
-                removeTag(appliance);
+                removeTag(appliance, filter);
                 activeTags.delete(appliance);
                 removeActiveBtn.remove();
                 onTagSelect(Array.from(activeTags));
@@ -50,7 +46,6 @@ export function appliancesFilter(recipes, onTagSelect) {
 
         a.addEventListener('click', (e) => {
             e.preventDefault();
-            //  console.log(recipes);
             if (!a.classList.contains('active-tag')) {
                 a.classList.add('active-tag');
                 const removeActiveBtn = document.createElement('button');
@@ -64,18 +59,18 @@ export function appliancesFilter(recipes, onTagSelect) {
                 removeActiveBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     a.classList.remove('active-tag');
-                    removeTag(appliance);
+                    removeTag(appliance, filter);
                     activeTags.delete(appliance);
                     removeActiveBtn.remove();
                     onTagSelect(Array.from(activeTags));
                 });
 
                 a.appendChild(removeActiveBtn);
-                createTag(appliance);
+                createTag(appliance, activeTags, onTagSelect, filter);
                 activeTags.add(appliance);
             } else {
                 a.classList.remove('active-tag');
-                removeTag(appliance);
+                removeTag(appliance, filter);
                 activeTags.delete(appliance);
                 const removeButton = a.querySelector('.remove-active-btn');
                 if (removeButton) removeButton.remove();
@@ -100,50 +95,5 @@ export function appliancesFilter(recipes, onTagSelect) {
         });
     });
 
-    function createTag(applianceName) {
-        const tagContainer = document.querySelector('.tags-container');
-        const tag = document.createElement('div');
-        tag.className = 'tag';
-        tag.textContent = applianceName;
-
-
-        tag.setAttribute('data-appliance', applianceName);
-
-        const closeButton = document.createElement('button');
-        closeButton.className = 'ml-2 text-gray-500 hover:text-gray-700';
-        closeButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
-            <path d="M12 11.5L7 6.5M7 6.5L2 1.5M7 6.5L12 1.5M7 6.5L2 11.5" stroke="#1B1B1B" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>`;
-
-        closeButton.addEventListener('click', () => {
-            removeTag(applianceName);
-            activeTags.delete(applianceName);
-            tag.remove();
-            onTagSelect(Array.from(activeTags));
-        });
-
-        tag.appendChild(closeButton);
-        tagContainer.appendChild(tag);
-    }
-
-    function removeTag(applianceName) {
-        const tags = document.querySelectorAll('.tags-container .tag');
-        tags.forEach(tag => {
-            if (tag.getAttribute('data-appliance') === applianceName) {
-                tag.remove();
-            }
-        });
-
-        const dropdownItems = document.querySelectorAll('#applianceList a');
-        dropdownItems.forEach(item => {
-            if (item.textContent.trim() === applianceName) {
-                item.classList.remove('active-tag');
-                const removeButton = item.querySelector('.remove-active-btn');
-                if (removeButton) removeButton.remove();
-            }
-        });
-    }
     return activeTags;
-
 }

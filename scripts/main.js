@@ -38,13 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         let ustensils = ustensilsFilter(filteredRecipes, handleTagSelect);
 
         activeTags = [...ingredients, ...appliances, ...ustensils]
-        console.log('activeTags', activeTags);
+
     }
 
     function handleTagSelect() {
         updateDropdown(filteredRecipes);
 
-        console.log('activeTags 2 ', activeTags);
 
         const query = searchInput.value.trim().toLowerCase();
         filteredRecipes = filterRecipes(recipes, query, activeTags);
