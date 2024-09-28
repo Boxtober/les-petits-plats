@@ -3,8 +3,9 @@ export function createTag(typeOfTag, activeTags, onTagSelect, filter) {
     const tag = document.createElement('div');
     tag.className = 'tag';
     tag.textContent = typeOfTag;
+    // typeOfTag prend sa valeur à l'initialisation de la fonction createTag() dans les different fichiers de filtres
 
-    // Ajoutez un attribut pour lier le tag au lien <a>
+    // ajoute un attribut pour lier le tag au lien <a>
     tag.setAttribute(`data-${filter}`, typeOfTag);
 
     const closeButton = document.createElement('button');
@@ -45,6 +46,5 @@ export function removeTag(typeOfTag, filter) {
             const removeButton = item.querySelector('.remove-active-btn');
             if (removeButton) removeButton.remove();
         }
-
     });
 }

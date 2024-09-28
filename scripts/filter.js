@@ -13,11 +13,8 @@ export function filterRecipes(recipes, query, tags = []) {
             const isIngredientTag = recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() === tagLower);
             const isApplianceTag = recipe.appliance.toLowerCase() === tagLower;
             const isUstensilTag = recipe.ustensils.some(ustensil => ustensil.toLowerCase() === tagLower);
-
             return isIngredientTag || isApplianceTag || isUstensilTag;
         });
-
-
         return foundBySearch && foundByTags;
     });
 }

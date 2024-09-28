@@ -1,17 +1,15 @@
 import { createTag, removeTag } from '../tags.js';
 
-// Déclarer activeTags en dehors de la fonction pour la rendre globale
 const activeTags = new Set();
 let filter = 'ustensil';
 
 export function ustensilsFilter(recipes, onTagSelect) {
 
-    // recupère les ustensils
     const ustensilsSet = new Set();
     recipes.forEach(recipe => {
 
         recipe.ustensils.forEach(ustensil => {
-            ustensilsSet.add(ustensil); // ajout de chaque ustensile au Set
+            ustensilsSet.add(ustensil);
         });
 
     });
@@ -19,19 +17,15 @@ export function ustensilsFilter(recipes, onTagSelect) {
     const ustensilListContainer = document.getElementById('ustensilList');
     ustensilListContainer.textContent = '';
 
-    /***Ajout liste ustensils dans dropdown ***/
     ustensilsSet.forEach(ustensil => {
         const a = document.createElement('a');
         a.href = "#";
         a.className = "dropdown-list block";
         a.textContent = ustensil;
 
-        // Réapplique la classe `active-tag` si l'ingrédient est déjà actif
-
         if (activeTags.has(ustensil)) {
             a.classList.add('active-tag');
 
-            // Ajoute le bouton de suppression si l'ingrédient est déjà actif
             const removeActiveBtn = document.createElement('button');
             removeActiveBtn.className = 'remove-active-btn';
             removeActiveBtn.innerHTML = `
@@ -58,7 +52,6 @@ export function ustensilsFilter(recipes, onTagSelect) {
             if (!a.classList.contains('active-tag')) {
                 a.classList.add('active-tag');
 
-                // Ajoute le bouton de suppression
                 const removeActiveBtn = document.createElement('button');
                 removeActiveBtn.className = 'remove-active-btn';
                 removeActiveBtn.innerHTML = `
@@ -92,7 +85,6 @@ export function ustensilsFilter(recipes, onTagSelect) {
         ustensilListContainer.appendChild(a);
     });
 
-    // compare la valeur de l'input pour afficher ou cacher les ustensil dans la liste
     const searchInputUstensils = document.getElementById('searchInputUstensils');
     searchInputUstensils.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase();
