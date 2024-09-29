@@ -26,4 +26,3 @@ export function updateDropdowns(filteredRecipes, onTagSelect) {
     appliancesFilter(filteredRecipes, onTagSelect);
     ustensilsFilter(filteredRecipes, onTagSelect);
 }
-
