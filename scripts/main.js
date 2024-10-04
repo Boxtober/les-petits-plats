@@ -66,11 +66,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Gestion de la recherche textuelle
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
-        if (query.length >= 3) {
-            filteredRecipes = filterRecipes(recipes, query, activeTags);
-        } else {
-            filteredRecipes = recipes; // Affiche toutes recettes si la recherche contient moins de 3 caractères
-        }
+        let queryValue = query;
+        if (query.length < 3) { queryValue = ''; }
+        filteredRecipes = filterRecipes(recipes, queryValue, activeTags);
         displayRecipes(filteredRecipes);  // Affiche les recettes après filtrage ou réinitialisation
         updateDropdown(filteredRecipes); // MAJ des dropdowns pour être synchronisés avec les recettes visibles
     });
